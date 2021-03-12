@@ -58,15 +58,15 @@ def main():
     'Authorization':access_token,
     'Content-Type':'application/json'
     }
-    begin = random.randint(0,len(all_API_url))
-    if begin != len(all_API_url)-1: begin+=1
-    end = random.randint(begin,len(all_API_url))
-    for x in range(begin,end):
+
+    for x in range(random.randint(3,11)): # 每次调用上限/下限
         try:
-            r = req.get(all_API_url[x],headers=headers)
+            idx = random.randrange(len(all_API_url))
+            r = req.get(all_API_url[idx],headers=headers)
             if r.status_code == 200:
                 num1+=1
                 print(f'{x}号发射成功, 总第{num1}次成功')
+                time.sleep(random.uniform(0,3)) # 调用间隔
             else:
                 print(r.text)
         except Exception as e:
