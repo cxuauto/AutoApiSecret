@@ -10,6 +10,7 @@ import random,os
 
 path=sys.path[0]+r'/1.txt'
 num1 = 0
+random.seed()
 
 # refresh_token = os.environ.get('REFRESH_TOKEN')
 id = os.environ.get('CLIENT_ID')
