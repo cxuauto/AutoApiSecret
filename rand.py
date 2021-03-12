@@ -47,11 +47,11 @@ r'https://api.powerbi.com/v1.0/myorg/apps',
 r'https://graph.microsoft.com/v1.0/me/mailFolders',
 r'https://graph.microsoft.com/v1.0/me/outlook/masterCategories']
 
-num1 = 0
 with open(path, "r+") as fo:
     refresh_token = fo.read()
 
 def main():
+    global num1
     # localtime = time.asctime( time.localtime(time.time()) )
     access_token=gettoken(refresh_token)
     headers={
