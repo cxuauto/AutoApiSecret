@@ -59,6 +59,7 @@ def main():
     'Content-Type':'application/json'
     }
     begin = random.randint(0,len(all_API_url))
+    if begin != len(all_API_url)-1: begin+=1
     end = random.randint(begin,len(all_API_url))
     for x in range(begin,end):
         try:
@@ -68,8 +69,9 @@ def main():
                 print(f'{x}号发射成功, 总第{num1}次成功')
             else:
                 print(r.text)
-        except:
+        except Exception as e:
             print(f"{x}号发射失败")
+            print(e)
             pass
         if x == end-1 :
             print('此次运行结束时间为 :', time.asctime( time.localtime(time.time()) ) )
