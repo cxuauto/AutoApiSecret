@@ -66,7 +66,7 @@ def main():
             r = req.get(all_API_url[idx],headers=headers)
             if r.status_code == 200:
                 num1+=1
-                print(f'{x}号发射成功, 总第{num1}次成功')
+                print(f'{idx}号发射成功, 总第{num1}次成功')
                 time.sleep(random.uniform(0,3)) # 调用间隔
             else:
                 print(r.text)
