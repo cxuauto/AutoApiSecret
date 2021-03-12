@@ -73,7 +73,8 @@ def main():
             print(f"{x}号发射失败")
             print(e)
             pass
-        if x == end-1 :
-            print('此次运行结束时间为 :', time.asctime( time.localtime(time.time()) ) )
+    print('此次运行结束时间为 :', time.asctime( time.localtime(time.time()) ) )
+    return
+
 for i in range(3):
     main()
