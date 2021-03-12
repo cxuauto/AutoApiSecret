@@ -35,17 +35,17 @@ def gettoken(refresh_token):
         f.write(refresh_token)
     return access_token
 
-all_API_url = ['https://graph.microsoft.com/v1.0/me/drive/root',
-'https://graph.microsoft.com/v1.0/me/drive',
-'https://graph.microsoft.com/v1.0/drive/root',
-'https://graph.microsoft.com/v1.0/users',
-'https://graph.microsoft.com/v1.0/me/messages',
-'https://graph.microsoft.com/v1.0/me/mailFolders/inbox/messageRules',
-'https://graph.microsoft.com/v1.0/me/mailFolders/Inbox/messages/delta',
-'https://graph.microsoft.com/v1.0/me/drive/root/children',
-'https://api.powerbi.com/v1.0/myorg/apps',
-'https://graph.microsoft.com/v1.0/me/mailFolders',
-'https://graph.microsoft.com/v1.0/me/outlook/masterCategories']
+all_API_url = [r'https://graph.microsoft.com/v1.0/me/drive/root',
+r'https://graph.microsoft.com/v1.0/me/drive',
+r'https://graph.microsoft.com/v1.0/drive/root',
+r'https://graph.microsoft.com/v1.0/users',
+r'https://graph.microsoft.com/v1.0/me/messages',
+r'https://graph.microsoft.com/v1.0/me/mailFolders/inbox/messageRules',
+r'https://graph.microsoft.com/v1.0/me/mailFolders/Inbox/messages/delta',
+r'https://graph.microsoft.com/v1.0/me/drive/root/children',
+r'https://api.powerbi.com/v1.0/myorg/apps',
+r'https://graph.microsoft.com/v1.0/me/mailFolders',
+r'https://graph.microsoft.com/v1.0/me/outlook/masterCategories']
 
 num1 = 0
 with open(path, "r+") as fo:
@@ -62,13 +62,16 @@ def main():
     end = random.randint(begin,len(all_API_url))
     for x in range(begin,end):
         try:
-            if req.get(all_API_url[x],headers=headers).status_code == 200:
+            r = req.get(all_API_url[x],headers=headers)
+            if r.status_code == 200:
                 num1+=1
-                print(f'{x}号发射成功, 总第{num1}次')
+                print(f'{x}号发射成功, 总第{num1}次成功')
+            else:
+                print(r.text)
         except:
             print(f"{x}号发射失败")
             pass
         if x == end-1 :
             print('此次运行结束时间为 :', time.asctime( time.localtime(time.time()) ) )
-for _ in range(3):
+for i in range(3):
     main()
