@@ -69,7 +69,7 @@ def main():
                 print(f'{idx}号发射成功, 总第{num1}次成功')
                 time.sleep(random.uniform(0,3)) # 调用间隔
             else:
-                print(r.status_code, r.text)
+                print(idx, r.status_code, r.text)
         except Exception as e:
             print(f"{x}号发射失败")
             print(e)
