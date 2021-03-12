@@ -22,7 +22,7 @@ def gettoken(refresh_token):
           'refresh_token': refresh_token,
           'client_id':id,
           'client_secret':secret,
-          'redirect_uri':'https://heymind.github.io/tools/microsoft-graph-api-auth'
+          'redirect_uri':'http://localhost:53682/'
          }
     html = req.post('https://login.microsoftonline.com/common/oauth2/v2.0/token',data=data,headers=headers)
     jsontxt = json.loads(html.text)
@@ -48,12 +48,10 @@ all_API_url = ['https://graph.microsoft.com/v1.0/me/drive/root',
 'https://graph.microsoft.com/v1.0/me/outlook/masterCategories']
 
 num1 = 0
+with open(path, "r+") as fo:
+    refresh_token = fo.read()
 
 def main():
-    fo = open(path, "r+")
-    refresh_token = fo.read()
-    fo.close()
-    global num1
     # localtime = time.asctime( time.localtime(time.time()) )
     access_token=gettoken(refresh_token)
     headers={
